@@ -81,11 +81,15 @@ class SearchView(APIView):
             bathrooms = 3.0
         elif bathrooms == '4+':
             bathrooms = 4.0
+        elif bathrooms == '5+':
+            bathrooms = 5.0
         
         queryset = queryset.filter(bathrooms__gte=bathrooms)
 
         sqft = data['sqft']
-        if sqft == '1000+':
+        if sqft == '0+':
+            sqft = 0
+        elif sqft == '1000+':
             sqft = 1000
         elif sqft == '1200+':
             sqft = 1200
@@ -182,7 +186,10 @@ class SearchView(APIView):
         
         open_house = data['open_house']
         queryset = queryset.filter(open_house__iexact=open_house)
-
+        
+        state  = data['state']
+        queryset = queryset.filter(state__iexact=state)
+        
         keywords = data['keywords']
         queryset = queryset.filter(description__icontains=keywords)
 

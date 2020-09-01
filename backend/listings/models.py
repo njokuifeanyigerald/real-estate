@@ -4,30 +4,70 @@ from realers.models import Realers
 
 class Listing(models.Model):
     class SaleType(models.TextChoices):
-        FOR_SALE = "for sale"
-        FOR_RENT = "for rent"
+        FOR_SALE = "For Sale"
+        FOR_RENT = "For Rent"
 
     class HomeType(models.TextChoices):
-        HOUSE = "house"
-        CONGO = "congo"
-        TOWNHOUSE = "town house"
-        LODGE = "lodge"
-        LAND = "land"
+        HOUSE = "House"
+        CONGO = "Congo"
+        TOWNHOUSE = "Town House"
+        LODGE = "Lodge"
+        LAND = "Land"
+    class StateType(models.TextChoices):
+        Abia ="Abia"
+        Adamawa ="Adamawa"
+        Akwa_Ibom ="Akwa Ibom"
+        Anambra ="Anambra"
+        Bauchi ="Bauchi"
+        Bayelsa ="Bayelsa"
+        Benue ="Benue"
+        Borno ="Borno"
+        Cross_River ="Cross River"
+        Delta ="Delta"
+        Ebonyi ="Ebonyi"
+        Edo ="Edo"
+        Ekiti ="Ekiti"
+        Enugu= "Enugu"
+        Gombe= "Gombe"
+        Imo="Imo"
+        Jigawa= "Jigawa"
+        Kaduna= "Kaduna"
+        Kano= "Kano"
+        Katsina= "Katsina"
+        Kebbi= "Kebbi"
+        Kogi= "Kogi"
+        Kwara ="Kwara"
+        Lagos ="Lagos"
+        Nasarawa = "Nasarawa"
+        Niger = "Niger"
+        Ogun = "Ogun"
+        Ondo = "Ondo"
+        Osun = "Osun"
+        Oyo = "Oyo"
+        Plateau = "Plateau"
+        Rivers = "Rivers"
+        Sokoto = "Sokoto"
+        Taraba = "Taraba"
+        Yobe = "Yobe"
+        Zamfara = "Zamfara"
+        Federal_Capital_Territory= "Federal Capital Territory (FCT)"
+
 
     realter = models.ForeignKey(Realers, on_delete=models.DO_NOTHING)
     slug = models.CharField(max_length=200, unique=True)
     title = models.CharField(max_length=150)
     address = models.CharField(max_length=150)
     city = models.CharField(max_length=100)
-    state = models.CharField(max_length=100)
+    state = models.CharField(max_length=100, choices=StateType.choices, default=StateType.Imo)
     zipcode = models.CharField(max_length=10)
-    descritption = models.TextField(blank=True)
+    description = models.TextField(blank=True)
     sale_type = models.CharField(max_length=50, choices=SaleType.choices, default=SaleType.FOR_SALE)
     price= models.IntegerField()
     bedroom = models.IntegerField()
     bedrooms = models.DecimalField(max_digits=2, decimal_places=1)
     home_type  = models.CharField(max_length=50, choices=HomeType.choices,  default=HomeType.HOUSE)
     sqft = models.IntegerField()
+    location = models.CharField(max_length=50)
     open_house = models.BooleanField(default=False)
     photo_main  = models.ImageField(upload_to='photo/%Y/%m/%d/')
     photo1 = models.ImageField(upload_to='photo/%Y/%m/%d/', blank=True)
