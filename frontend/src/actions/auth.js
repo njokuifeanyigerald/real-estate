@@ -16,11 +16,10 @@ export const login = (email,password) => async dispatch => {
             payload: res.data
         })
         dispatch(setAlert('Logged In Successfully', 'success'))
-    } catch (error) {
+    } catch (err) {
         dispatch({
             type:LOGIN_FAIL
         })
-
         dispatch(
             setAlert('Error Authenticating Credentials', 'error')
         )
@@ -33,7 +32,7 @@ export const signup = ({name, email,password,password2}) => async dispatch => {
             'Content-Type': 'application/json'
         }
     }
-    const body = JSON.stringify({name,email,password, password2})
+    const body = JSON.stringify({name,email,password, password2});
 
     try {
         const res = await axios.post('http://localhost:8000/api/accounts/signup', body, config)
@@ -45,7 +44,7 @@ export const signup = ({name, email,password,password2}) => async dispatch => {
         dispatch(
             setAlert('Welcome To 9jaProperty.ng', 'success')
         )
-    } catch (error) {
+    } catch (err) {
         dispatch({
             type:SIGNUP_FAIL
         })

@@ -2,8 +2,10 @@ import React,{Fragment} from 'react';
 import {Link,NavLink} from 'react-router-dom';
 import {connect}  from 'react-redux';
 import {logout} from '../actions/auth'
-import Alert from './alert';
 import PropTypes from 'prop-types';
+import android from './favicon.ico';
+import Alert from './alert'
+
 
 
 
@@ -24,7 +26,8 @@ const navbar = ({auth: {isAuthenticated, loading}, logout}) => {
            <nav className="navbar">
                <div className="navbar__top">
                    <div className="navbar__top__logo">
-                       <Link className="navbar__top__logo__link" to='/'>9JAPROPERTY</Link>
+                       <img src={android} alt="Logo" style={{marginRight:4, marginTop:4}} />
+                       <Link className="navbar__top__logo__link " style={{marginLeft:5}} to='/'>9jaProperty</Link>
                    </div>
                    <div className="navbar__top__auth">
                         <div className="navbar__top__auth">

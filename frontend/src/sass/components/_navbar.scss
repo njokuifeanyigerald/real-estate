@@ -7,13 +7,13 @@
         align-items: center;
         width: 100%;
         height: 10rem;
-        background-color: $color-secondary;
+        background-color: $color-black;
 
         &__logo {
             margin-left: 4rem;
 
             &__link {
-                font-size: 2.8rem;
+                font-size: 2.5rem;
                 color: $color-white;
                 text-decoration: none;
                 font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
@@ -48,7 +48,7 @@
         align-items: center;
         width: 100%;
         height: 7rem;
-        background-color: $color-tertiary;
+        background-color: $color-secondary;
 
         &__item {
             list-style: none;
@@ -64,4 +64,17 @@
             }
         }
     }
+}
+
+.text-capitalize{
+    text-transform: capitalize;
+}
+.text-uppercase{
+    text-transform: uppercase;
+}
+.text-lower{
+    text-transform: lowercase;
+}
+.text-center{
+    text-align: center;
 }
