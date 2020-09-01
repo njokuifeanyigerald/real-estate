@@ -11,14 +11,15 @@ const ListingForm = (props) => {
         bedrooms: '0+',
         home_type: 'House',
         bathrooms: '0+',
-        sqft:'1000+',
+        sqft:'0+',
         days_listed: '1 or less',
         has_photos: '1+',
         open_house: 'false',
+        state: 'Imo',
         keywords: ''
 
     });
-    const {sale_type,price,bedrooms,home_type,bathrooms,sqft,days_listed,has_photos,open_house,keywords} = formData;
+    const {sale_type,price,bedrooms,home_type,bathrooms,sqft,days_listed,has_photos,open_house,keywords,state} = formData;
     const [loading, setLoading] = useState(false)
 
     const onChange = e => setFormData({...formData,[e.target.name]: e.target.value})
@@ -48,12 +49,13 @@ const ListingForm = (props) => {
                         <label className='listingform__label' htmlFor='sale_type'>Sale Or Rent</label>
                         <select className='listingform__select' name='sale_type' onChange={e => onChange(e)} value={sale_type}>
                             <option>For sale  </option>
-                            <option>for rent</option>
+                            <option>For Rent</option>
                         </select>
                     </div>
                     <div className='listingform__section'>
                         <label className='listingform__label' htmlFor='sqft'>Sqft</label>
                         <select className='listingform__select' name='sqft' onChange={e => onChange(e)} value={sqft}>
+                            <option>0+</option>
                             <option>1000+</option>
                             <option>1200+</option>
                             <option>1500+</option>
@@ -66,17 +68,19 @@ const ListingForm = (props) => {
                     <div className='listingform__section'>
                         <label className='listingform__label' htmlFor='price'>minimum price</label>
                         <select className='listingform__select' name='price' onChange={e => onChange(e)} value={price}>
-                            <option>For sale  </option>
-                            <option>for rent</option>
-                            <option>1000+</option>
-                            <option>1200+</option>
-                            <option>1500+</option>
-                            <option>2000+</option>
+                            <option>N0+</option>
+                            <option>N200,000+</option>
+                            <option>N400,000+</option>
+                            <option>N600,000+</option>
+                            <option>N800,000+</option>
+                            <option>N1,000,000+</option>
+                            <option>N1,200,000+</option>
+                            <option>N1,500,000+</option>
                             <option>Any</option>
                         </select>
                     </div>
                     <div className='listingform__section'>
-                        <label className='listingform__label' htmlFor='days_listed'>Sale Or Rent</label>
+                        <label className='listingform__label' htmlFor='days_listed'>days listed</label>
                         <select className='listingform__select' name='days_listed' onChange={e => onChange(e)} value={days_listed}>
                             <option>1 or less  </option>
                             <option>2 or less</option>
@@ -122,13 +126,52 @@ const ListingForm = (props) => {
                         </select>
                     </div>
                     <div className='listingform__section'>
-                        <label className='listingform__label' htmlFor='keywords'>Keywords</label>
-                        <input className='listingform__input' name='keywords' type='text' onChange={e => onChange(e)} value={keywords} />
+                        <label className='listingform__label' htmlFor='state'>state</label>
+                        <select className='listingform__select' name='state' onChange={e => onChange(e)} value={state}>
+                            <option>Abia</option>
+                            <option>Adamawa</option>
+                            <option>Akwa Ibom</option>
+                            <option>Anambra</option>
+                            <option>Bauchi</option>
+                            <option>Bayelsa</option>
+                            <option>Benue</option>
+                            <option>Borno</option>
+                            <option>Cross River</option>
+                            <option>Delta</option>
+                            <option>Ebonyi</option>
+                            <option>Edo</option>
+                            <option>Ekiti</option>
+                            <option>Enugu</option>
+                            <option>Gombe</option>
+                            <option>Imo</option>
+                            <option>Jigawa</option>
+                            <option>Kaduna</option>
+                            <option>Kano</option>
+                            <option>Katsina</option>
+                            <option>Kebbi</option>
+                            <option>Kogi</option>
+                            <option>Kwara</option>
+                            <option>Lagos</option>
+                            <option>Nasarawa</option>
+                            <option>Niger</option>
+                            <option>Ogun</option>
+                            <option>Ondo</option>
+                            <option>Osun</option>
+                            <option>Oyo</option>
+                            <option>Plateau</option>
+                            <option>Rivers</option>
+                            <option>Sokoto</option>
+                            <option>Taraba</option>
+                            <option>Yobe</option>
+                            <option>Zamfara</option>
+                            <option>Federal Capital Territory</option>
+                        </select>
                     </div>
+                    
                 </div>
                 <div className='col-1-of-6'>
                     <div className='listingform__section'>
-                        <label className='listingform__label' htmlFor='bathrooms'>Baths</label>
+                        <label className='listingform__label' htmlFor='bathrooms'>Bathrooms</label>
                         <select className='listingform__select' name='bathrooms' onChange={e => onChange(e)} value={bathrooms}>
                             <option>0+</option>
                             <option>1+</option>
@@ -138,12 +181,16 @@ const ListingForm = (props) => {
                             <option>5+</option>
                         </select>
                     </div>
-                    <div className='listingform__altsection'>
+                    <div className='listingform__section'>
+                        <label className='listingform__label' htmlFor='keywords'>Keywords</label>
+                        <input className='listingform__input' name='keywords' type='text' onChange={e => onChange(e)} value={keywords} />
+                    </div>
+                    <div className='listingform__altsection' style={{marginTop:5}}>
                         <label className='listingform__label' htmlFor='open_house'>Open Houses</label>
                         <input className='listingform__checkbox' name='open_house' type='checkbox' onChange={e => onChange(e)} value={open_house} />
                     </div>
                 </div>
-                <div className="col-1-of-6">
+                <div className="col-1-of-6" style={{marginTop:5}}>
                     { loading ? 
                         <div className='listingform__loader'>
                             <Loader 
@@ -153,7 +200,7 @@ const ListingForm = (props) => {
                                 width={50}
                             />
                         </div>:
-                        <button className="listingform__button listingform__button--primary">submit</button>
+                        <button className="listingform__button listingform__button--primary">search</button>
                     
                     }
                 </div>
@@ -164,7 +211,7 @@ const ListingForm = (props) => {
     )
 };
 ListingForm.propTypes = {
-    setListings: PropTypes.func.isRe
+    setListings: PropTypes.func.isRequired
 }
 
 export default ListingForm;

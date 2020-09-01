@@ -26,11 +26,11 @@ const navbar = ({auth: {isAuthenticated, loading}, logout}) => {
            <nav className="navbar">
                <div className="navbar__top">
                    <div className="navbar__top__logo">
-                       <img src={android} alt="Logo" style={{marginRight:4, marginTop:4}} />
-                       <Link className="navbar__top__logo__link " style={{marginLeft:5}} to='/'>9jaProperty</Link>
+                       <img src={android} alt="Logo" style={{marginRight:4, marginTop:5}} />
+                       <Link className="navbar__top__logo__link " style={{marginLeft:5, marginBottom:3}} to='/'>9jaProperty</Link>
                    </div>
                    <div className="navbar__top__auth">
-                        <div className="navbar__top__auth">
+                        <div className="navbar__top__auth" style={{marginRight:4, marginTop:5}}>
                             {!loading && (<Fragment>{isAuthenticated ? authLinks: guestLink}</Fragment>)}
                         </div>
                    </div>
