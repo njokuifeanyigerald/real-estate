@@ -23,7 +23,7 @@ const Signin = ({login, isAuthenticated}) => {
 
    }
    return (
-        <div className='auth'>
+        <div className='auth container'>
            <Helmet>
                <title>9jaProperty - Login</title>
                <meta
@@ -31,8 +31,8 @@ const Signin = ({login, isAuthenticated}) => {
                     content='Login page'
                 />
             </Helmet>
-            <h1 className="auth__title text-capitalize">login</h1>
-            <p className='auth__lead text-capitalize'>Sign into your account</p>
+            <h1 className="auth__title lead text-capitalize">login</h1>
+            <p className='auth__authtext lead text-capitalize'>Sign into your account</p>
             <form className='auth__form' onSubmit={e => onSubmit(e)}>
                 <div className='auth__form__group'>
                     <input className='auth__form__input' 
@@ -44,7 +44,7 @@ const Signin = ({login, isAuthenticated}) => {
                         value={password} onChange={e => onChange(e)} required minLength='8' />
                 </div>
                 <button className='auth__form__button'>Login</button>
-                <p className='auth__authtext text-capitalize'>
+                <p className='auth__authtext lead text-capitalize'>
                     don't have an account? <Link className='auth__authtext__link' to='/signup'>sign up</Link>
                 </p>
             </form>

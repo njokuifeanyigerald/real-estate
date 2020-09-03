@@ -132,8 +132,9 @@ REST_FRAMEWORK = {
         'rest_framework_simplejwt.authentication.JWTAuthentication'         
     ],
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
-    'PAGE_SIZE': 3
-}
+    'PAGE_SIZE': 9  
+    # change to 9
+} 
 
 CORS_ORIGIN_ALLOW_ALL: True
 FILE_UPLOAD_PERMISSIONS = 0o644

@@ -32,7 +32,7 @@ const Signup = ({setAlert, signup, isAuthenticated}) => {
         return <Redirect to='/' />
     }
     return (
-        <div className='auth'>
+        <div className='auth container'>
             <Helmet>
                 <title>9jaProperty - Signup</title>
                 <meta
@@ -40,8 +40,8 @@ const Signup = ({setAlert, signup, isAuthenticated}) => {
                     content='SignUp page'
                 />
             </Helmet>
-            <h1 className="auth__title text-capitalize">Sign Up</h1>
-            <p className='auth__lead text-capitalize'>Sign Up an account</p>
+            <h1 className="auth__title lead text-capitalize">Sign Up</h1>
+            <p className='auth__authtext lead text-capitalize'>register an account</p>
             <form className='auth__form' onSubmit={e => onSubmit(e)}>
                 <div className='auth__form__group'>
                     <input className='auth__form__input' 
@@ -62,7 +62,7 @@ const Signup = ({setAlert, signup, isAuthenticated}) => {
                         value={password2} onChange={e => onChange(e)} required minLength='8' />
                 </div>
                 <button className='auth__form__button'>Signup</button>
-                <p className='auth__authtext text-capitalize'>
+                <p className='auth__authtext lead text-capitalize'>
                     already have an account? <Link className='auth__authtext__link' to='/login'>Login</Link>
                 </p>
             </form>

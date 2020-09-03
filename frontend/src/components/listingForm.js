@@ -14,22 +14,25 @@ const ListingForm = (props) => {
         sqft:'0+',
         days_listed: '1 or less',
         has_photos: '1+',
-        open_house: 'false',
         state: 'Imo',
         keywords: ''
 
     });
-    const {sale_type,price,bedrooms,home_type,bathrooms,sqft,days_listed,has_photos,open_house,keywords,state} = formData;
+    const {sale_type,price,bedrooms,home_type,bathrooms,sqft,days_listed,has_photos,state, keywords} = formData;
     const [loading, setLoading] = useState(false)
 
     const onChange = e => setFormData({...formData,[e.target.name]: e.target.value})
 
     const onSubmit = e => {
-        axios.defaults.headers = {
-            'Content-Type': 'application/json'
-        }
+        e.preventDefault();
+
+        const config = {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        };
         setLoading(true)
-        axios.post('http://localhost:8000/api/listings/search',{sale_type,price,bedrooms,home_type,bathrooms,sqft,days_listed,has_photos,open_house,keywords})
+        axios.post('http://localhost:8000/api/listings/search',{sale_type,price,bedrooms,home_type,bathrooms,sqft,days_listed,has_photos,state,keywords }, config)
             .then(res =>{
                 setLoading(false)
                 props.setListings(res.data);
@@ -42,13 +45,13 @@ const ListingForm = (props) => {
 
     }
     return(
-        <div className='listingform text-capitalize' onSubmit={e => onSubmit(e)}>
+        <form className='listingform text-capitalize' onSubmit={e => onSubmit(e)}>
             <div className='row'>
                 <div className='col-1-of-6'>
                     <div className='listingform__section'>
                         <label className='listingform__label' htmlFor='sale_type'>Sale Or Rent</label>
                         <select className='listingform__select' name='sale_type' onChange={e => onChange(e)} value={sale_type}>
-                            <option>For sale  </option>
+                            <option>For Sale</option>
                             <option>For Rent</option>
                         </select>
                     </div>
@@ -185,10 +188,13 @@ const ListingForm = (props) => {
                         <label className='listingform__label' htmlFor='keywords'>Keywords</label>
                         <input className='listingform__input' name='keywords' type='text' onChange={e => onChange(e)} value={keywords} />
                     </div>
-                    <div className='listingform__altsection' style={{marginTop:5}}>
+                    {/* <div className='listingform__altsection' style={{marginTop:5}}>
                         <label className='listingform__label' htmlFor='open_house'>Open Houses</label>
-                        <input className='listingform__checkbox' name='open_house' type='checkbox' onChange={e => onChange(e)} value={open_house} />
-                    </div>
+                        <select className='listingform__select' name='open_house' onChange={e => onChange(e)} value={open_house}>
+                            <option></option>
+                            <option>True</option>
+                        </select>
+                    </div> */}
                 </div>
                 <div className="col-1-of-6" style={{marginTop:5}}>
                     { loading ? 
@@ -207,7 +213,7 @@ const ListingForm = (props) => {
 
 
             </div>
-        </div>
+        </form>
     )
 };
 ListingForm.propTypes = {

@@ -17,36 +17,38 @@ const navbar = ({auth: {isAuthenticated, loading}, logout}) => {
 
    const guestLink =  (
        <Fragment>
-           <Link className="navbar__top__auth__link" to='/login'>Login</Link>
-           <Link  className="navbar__top__auth__link" to='/signup'>Signup</Link>
+           <Link className="navbar__top__auth__link " to='/login'>Login</Link>
+           <Link  className="navbar__top__auth__link " to='/signup'>Signup</Link>
        </Fragment>
    )
    return(
        <Fragment>
-           <nav className="navbar">
+           <nav className=" nav">
                <div className="navbar__top">
-                   <div className="navbar__top__logo">
-                       <img src={android} alt="Logo" style={{marginRight:4, marginTop:5}} />
-                       <Link className="navbar__top__logo__link " style={{marginLeft:5, marginBottom:3}} to='/'>9jaProperty</Link>
+                   <div className=" nav-item">
+                       {/* <img src={android} alt='' className="mr-4 d-none navlink d-md-block d-lg-block d-sm-none"/> */}
+                       <Link className="navbar__top__logo__link nav-link " to='/'>9jaProperty</Link>
                    </div>
-                   <div className="navbar__top__auth">
-                        <div className="navbar__top__auth" style={{marginRight:4, marginTop:5}}>
+                   <div className=" nav-item">
+                        <div className="navbar__top__auth nav-link justify-content-end ml-5 " style={{marginRight:4, marginTop:5}}>
                             {!loading && (<Fragment>{isAuthenticated ? authLinks: guestLink}</Fragment>)}
                         </div>
                    </div>
                </div>
-               <div className="navbar__bottom">
-                   <li className="navbar__bottom__item">
-                       <NavLink className="navbar__bottom__item__link" exact to='/'>Home</NavLink>
+            </nav>
+            <nav className="nav">
+               <div className="navbar__bottom ">
+                   <li className="navbar__bottom__item nav-item">
+                       <NavLink className="navbar__bottom__item__link nav-link" exact to='/'>Home</NavLink>
                    </li>
-                   <li className="navbar__bottom__item">
-                       <NavLink className="navbar__bottom__item__link" exact to='/listings'>Listings</NavLink>
+                   <li className="navbar__bottom__item nav-item">
+                       <NavLink className="navbar__bottom__item__link nav-link" exact to='/listings'>Listings</NavLink>
                    </li>
-                   <li className="navbar__bottom__item">
-                       <NavLink className="navbar__bottom__item__link" exact to='/about'>About</NavLink>
+                   <li className="navbar__bottom__item nav-item">
+                       <NavLink className="navbar__bottom__item__link nav-link" exact to='/about'>About</NavLink>
                    </li>
-                   <li className="navbar__bottom__item">
-                       <NavLink className="navbar__bottom__item__link" exact to='/contact'>Contact</NavLink>
+                   <li className="navbar__bottom__item nav-item">
+                       <NavLink className="navbar__bottom__item__link nav-link" exact to='/contact'>Contact</NavLink>
                    </li>
                </div>
            </nav>

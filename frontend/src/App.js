@@ -25,8 +25,8 @@ const App = () =>(
         {/* the props.children in layout.js in anything under the layout tag */}
         <Switch>
           <Route exact path='/' component={Home}/>
-          <Route exact path='/about' component={About} />
           <Route exact path='/contact' component={Contact} />
+          <Route exact path='/about' component={About} />
           <Route exact path='/listings' component={Listings} />
           <Route exact path='/listing/:id' component={ListingDetail} />
           <Route exact path='/signup' component={Signup} />
