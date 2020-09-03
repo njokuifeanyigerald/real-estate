@@ -3,7 +3,7 @@ from rest_framework.views import APIView
 from rest_framework.generics import ListAPIView, RetrieveAPIView
 from rest_framework import permissions
 from .models import Listing
-from .serializers import ListingSerializer, listingDetailSerializer
+from .serializer import ListingSerializer, ListingDetailSerializer
 from datetime import datetime, timezone, timedelta
 
 class ListingsView(ListAPIView):
@@ -14,7 +14,7 @@ class ListingsView(ListAPIView):
 
 class ListingView(RetrieveAPIView):
     queryset = Listing.objects.order_by('-list_date').filter(is_published=True)
-    serializer_class = listingDetailSerializer
+    serializer_class = ListingDetailSerializer
     lookup_field = 'slug'
 
 class SearchView(APIView):
@@ -184,14 +184,15 @@ class SearchView(APIView):
                 slug = query.slug
                 queryset = queryset.exclude(slug__iexact=slug)
         
-        open_house = data['open_house']
-        queryset = queryset.filter(open_house__iexact=open_house)
+
         
         state  = data['state']
         queryset = queryset.filter(state__iexact=state)
         
         keywords = data['keywords']
         queryset = queryset.filter(description__icontains=keywords)
+
+    
 
         serializer = ListingSerializer(queryset, many=True)
 

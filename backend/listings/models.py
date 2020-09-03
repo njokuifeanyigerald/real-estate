@@ -50,7 +50,7 @@ class Listing(models.Model):
         Taraba = "Taraba"
         Yobe = "Yobe"
         Zamfara = "Zamfara"
-        Federal_Capital_Territory= "Federal Capital Territory (FCT)"
+        Federal_Capital_Territory= "Federal Capital Territory"
 
 
     realter = models.ForeignKey(Realers, on_delete=models.DO_NOTHING)
@@ -63,8 +63,8 @@ class Listing(models.Model):
     description = models.TextField(blank=True)
     sale_type = models.CharField(max_length=50, choices=SaleType.choices, default=SaleType.FOR_SALE)
     price= models.IntegerField()
-    bedroom = models.IntegerField()
-    bedrooms = models.DecimalField(max_digits=2, decimal_places=1)
+    bedrooms = models.IntegerField()
+    bathrooms = models.DecimalField(max_digits=2, decimal_places=1)
     home_type  = models.CharField(max_length=50, choices=HomeType.choices,  default=HomeType.HOUSE)
     sqft = models.IntegerField()
     location = models.CharField(max_length=50)
@@ -80,6 +80,7 @@ class Listing(models.Model):
     photo8 = models.ImageField(upload_to='photo/%Y/%m/%d/', blank=True)
     photo9 = models.ImageField(upload_to='photo/%Y/%m/%d/', blank=True)
     photo10 = models.ImageField(upload_to='photo/%Y/%m/%d/', blank=True)
+    photo11 = models.ImageField(upload_to='photo/%Y/%m/%d/', blank=True)
     photo12 = models.ImageField(upload_to='photo/%Y/%m/%d/', blank=True)
     photo13 = models.ImageField(upload_to='photo/%Y/%m/%d/', blank=True)
     photo14= models.ImageField(upload_to='photo/%Y/%m/%d/', blank=True)
