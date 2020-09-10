@@ -7,8 +7,9 @@ const Listings = ({listings}) => {
         let lisitingsOnPage = [];
         let result = [];
 
-        listings.map(listing  => {
-            return lisitingsOnPage.push(
+        
+            return listings.length < 1? <h2>item not found</h2>: listings.map(listing  => 
+                { return  lisitingsOnPage.push(
                 <Card 
                     key={listing.id}
                     title={listing.title}
@@ -29,7 +30,7 @@ const Listings = ({listings}) => {
             )
         });
 
-        for (let i = 0 ; i < listings.length;i += 3 ){
+        for (let i = 0 ; i < listings.length;i += 9){
             result.push(
                 <div className="row">
                     <div className="col-1-of-3">
@@ -49,7 +50,8 @@ const Listings = ({listings}) => {
     };
     return (
         <div>
-           {getListings()}
+            {getListings()}
+           {/* {getListings.length === 0?  <div>no results</div>:getListings()} */}
         </div>
     );
 }

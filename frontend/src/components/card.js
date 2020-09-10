@@ -11,26 +11,32 @@ const Card = (props) => {
     };
 
     return (
-        <div className="card">
-            <h3 className="card__title">{props.title}</h3>
-            <div className='card__header'>
-                <img className='card__header__photo' src={props.photo_main} alt='House' />
-            </div>
-            <p className='card__location'>{props.address}, {props.city}, {props.state}</p>
-            <div className='row'>
-                <div className='col-3-of-4'>
-                    <p className='card__info'>Price: N{numberWithCommas(props.price)}</p>
-                    <p className='card__info'>Bedrooms: {props.bedrooms}</p>
-                    <p className='card__info'>Bathrooms: {Math.floor(props.bathrooms)}</p>
+        <div>
+            <div className="card">
+                
+                <h3 className="card__title">{props.title}</h3>
+                <div className='card__header'>
+                    <img className='card__header__photo' src={props.photo_main} alt='House' />
                 </div>
-                <div className='col-1-of-2'>
-                    <p className='card__saletype '>{props.sale_type}</p>
-                    <p className='card__hometype'>{props.home_type}</p>
-                    <p className='card__sqft'>Sqft: {props.sqft}</p>
+                <p className='card__location'>{props.address}, {props.city}, {props.state}</p>
+                <div className='row'>
+                    <div className='col-3-of-4'>
+                        <p className='card__info'>Price: N{numberWithCommas(props.price)}</p>
+                        <p className='card__info'>Bedrooms: {props.bedrooms}</p>
+                        <p className='card__info'>Bathrooms: {Math.floor(props.bathrooms)}</p>
+                    </div>
+                    <div className='col-1-of-2'>
+                        <p className='card__saletype '>{props.sale_type}</p>
+                        <p className='card__hometype'>{props.home_type}</p>
+                        <p className='card__sqft'>Sqft: {props.sqft}</p>
+                    </div>
                 </div>
-            </div>
-            <Link className='card__link btn' to={`/listing/${props.slug}`}>View Listing</Link>
+                <Link className='card__link btn' to={`/listing/${props.slug}`}>View Listing</Link>
+               
+            </div> 
+            
         </div>
+        
     )
 }
 

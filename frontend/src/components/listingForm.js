@@ -188,13 +188,6 @@ const ListingForm = (props) => {
                         <label className='listingform__label' htmlFor='keywords'>Keywords</label>
                         <input className='listingform__input' name='keywords' type='text' onChange={e => onChange(e)} value={keywords} />
                     </div>
-                    {/* <div className='listingform__altsection' style={{marginTop:5}}>
-                        <label className='listingform__label' htmlFor='open_house'>Open Houses</label>
-                        <select className='listingform__select' name='open_house' onChange={e => onChange(e)} value={open_house}>
-                            <option></option>
-                            <option>True</option>
-                        </select>
-                    </div> */}
                 </div>
                 <div className="col-1-of-6" style={{marginTop:5}}>
                     { loading ? 

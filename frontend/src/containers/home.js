@@ -7,7 +7,7 @@ import Pagination from '../components/pagination'
 const Home = () => {
     const [listings, setListings] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
-    const [listingsPerPage, setListingsPerPage] = useState(9);  // remember to change it to 9 even in the backend
+    const [listingsPerPage, setListingsPerPage] = useState(3);  // remember to change it to 9 even in the backend
     const [active, setActive] = useState(1)
 
     const indexOfLastListing = currentPage * listingsPerPage;
